@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  {% if messages %}
+  {% for msg in messages %}
+  <div class="alert success">
+    <span class="closebtn success" style="cursor:pointer">×</span>
+    <i class="fa fa-check fa-1x"></i> 
+    <strong>{{msg}}</strong>
+  </div>
+  {% endfor %}
+  {% endif %}
+<h1>Add a Product</h1>
+
+<div class="container">
+  
+  <form action="{% url 'save' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="fname">Name</label>
+    <input type="text" id="fname" name="name" placeholder="Product name.." required>
+
+    <label for="subject">Description</label>
+    <input type="text" id="fname" name="subject" placeholder="something about product.." required>
+
+    <label for="fname">Price</label>
+    <input type="text" id="fname" name="price" placeholder="Product price.." required>
+
+    <label for="fname">Product Image</label>
+    <br>
+    <input type="file" id="fname" name="img" placeholder="Product image.." required>
+    <br>
+    <br>
+    <input type="submit" value="Save">&nbsp; &nbsp;<input type="reset" value="Reset">
+  </form>
+</div>
+<!-- JavaScript Bundle with Popper -->
+<script src="{% static 'script.js' %}"></script>
+</body>
+</html>

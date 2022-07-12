@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<!-- CSS only -->
+
+</head>
+<body>
+
+
+<h1>Data Updated</h1>
+
+
+<div class="container">
+  
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="fname">Name</label>
+    <input type="text" id="fname" name="name" value={{data.name}} placeholder="Product name.." required>
+
+    <label for="subject">Description</label>
+    <input type="text" id="fname" name="subject" value={{data.subject}} placeholder="something about product.." required>
+
+    <label for="fname">Price</label>
+    <input type="text" id="fname" name="price" value={{data.price}} placeholder="Product price.." required>
+
+    <label for="fname">Product Image</label>
+    {% if data.img %}
+    <img src="{{data.img.url}}" alt="image here" width="120">
+    {% endif %}
+    <br>
+    <input type="file" id="fname" name="img" placeholder="Product image..">
+    <br>
+    <br>
+    <input type="submit" value="Update">
+  </form>
+</div>
+<!-- JavaScript Bundle with Popper -->
+</body>
+</html>
